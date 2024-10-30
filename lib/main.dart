@@ -8,7 +8,7 @@ import 'feature/home/ui/home_view.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupGetIt();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -19,10 +19,11 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       child: MaterialApp(
-        title: 'Flutter Demo',
         theme: AppThemes.theme(),
         debugShowCheckedModeBanner: false,
-        home: HomeView(),
+        home: const SafeArea(
+          child: HomeView(),
+        ),
       ),
     );
   }

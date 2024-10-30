@@ -7,12 +7,3 @@ const Color cOnPrimary = Color(0xff2E3236);
 const Color cOnSecondary = Color(0xffFFFFFF);
 const Color cLightWhite = Color(0xff737074);
 const Color cGrey = Color(0xff949699);
-
-// //card background
-// #2E3236
-//
-// //card header background
-// #43484C
-//
-// //match time color
-// #949699

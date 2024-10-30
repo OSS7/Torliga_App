@@ -10,6 +10,7 @@ class HomeBackgroundEffect extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// green circle and blur effect for background
     return Align(
       alignment: Alignment.centerLeft,
       widthFactor: 0.5,

@@ -44,6 +44,7 @@ dependencies:
   json_annotation: ^4.9.0
   flutter_bloc: ^8.1.6
   redacted: ^1.0.12
+  pusher_channels_flutter: ^2.2.1
 
 
 dev_dependencies:

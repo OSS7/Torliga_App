@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:redacted/redacted.dart';
 import 'package:torliga/core/theming/colors.dart';
 import 'package:torliga/feature/home/logic/matches/matches_bloc.dart';
 
@@ -10,11 +11,13 @@ class HomeCompetitionTopBar extends StatelessWidget {
   final String? competitionName;
   final String? competitionImage;
   bool isExpanded;
+  bool isLoading;
   HomeCompetitionTopBar(
       {super.key,
       this.isExpanded = true,
       this.competitionName,
-      this.competitionImage});
+      this.competitionImage,
+      this.isLoading = true});
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +25,7 @@ class HomeCompetitionTopBar extends StatelessWidget {
       height: 44.h,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
+        /// circular card when expanded
         borderRadius: !isExpanded
             ? BorderRadius.all(Radius.circular(15.r))
             : BorderRadius.only(
@@ -35,6 +39,9 @@ class HomeCompetitionTopBar extends StatelessWidget {
           Image.network(
             competitionImage ?? '',
             height: 44.h,
+          ).redacted(
+            context: context,
+            redact: isLoading,
           ),
           const HorizontalSpacer(2),
           Expanded(
@@ -42,6 +49,9 @@ class HomeCompetitionTopBar extends StatelessWidget {
               competitionName ?? 'N/A',
               style: AppTextStyles.bold(),
             ),
+          ).redacted(
+            context: context,
+            redact: isLoading,
           ),
           Icon(
             isExpanded

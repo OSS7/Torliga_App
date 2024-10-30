@@ -18,18 +18,22 @@ class _HomeTabsState extends State<HomeTabs> {
   Widget build(BuildContext context) {
     return Row(
       children: List.generate(
-        3,
+        tabs.length,
         (index) => HomeTabsTabItem(
           onTap: () {
             setState(() {
               selectedIndex = index;
             });
-            matchesBloc
-                .add(GetMatchesEvent(tabs[index]['endpoint'].toString()));
+
+            /// call the api for selected tab
+            matchesBloc.add(
+              GetMatchesEvent(tabs[index]['endpoint'].toString()),
+            );
           },
+
+          /// different design when item is selected
           isSelected: (selectedIndex == index),
           title: tabs[index]['title'].toString(),
-          endpoint: tabs[index]['endpoint'].toString(),
         ),
       ),
     );

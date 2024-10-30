@@ -13,8 +13,7 @@ class MatchModel with _$MatchModel {
     @JsonKey(name: "home_team") TeamModel? homeTeam,
     @JsonKey(name: "away_team") TeamModel? awayTeam,
     @JsonKey(name: "match_status_id") int? matchStatusId,
-    @JsonKey(name: "match_status_description")
-    required String matchStatusDescription,
+    @JsonKey(name: "match_status_description") String? matchStatusDescription,
     @JsonKey(name: "match_day") String? matchDay,
     @JsonKey(name: "match_time") String? matchTime,
     @JsonKey(name: "kick_off") int? kickOff,

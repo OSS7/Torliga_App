@@ -7,7 +7,6 @@ import '../../../../core/theming/colors.dart';
 class HomeTabsTabItem extends StatefulWidget {
   final bool isSelected;
   final String title;
-  final String endpoint;
   final VoidCallback onTap;
 
   const HomeTabsTabItem({
@@ -15,7 +14,6 @@ class HomeTabsTabItem extends StatefulWidget {
     required this.isSelected,
     required this.title,
     required this.onTap,
-    required this.endpoint,
   });
 
   @override
@@ -23,6 +21,7 @@ class HomeTabsTabItem extends StatefulWidget {
 }
 
 class _HomeTabsTabItemState extends State<HomeTabsTabItem> {
+  /// animation properties
   late Color _color = cOnPrimary.withOpacity(0.7);
   late Color _textColor = cOnSecondary;
   Gradient? _gradient;
@@ -32,20 +31,20 @@ class _HomeTabsTabItemState extends State<HomeTabsTabItem> {
     super.didUpdateWidget(oldWidget);
 
     /// change back and fore color smoothly with animation when tab changes
-    // if (widget.isSelected != oldWidget.isSelected) {
-    setState(() {
-      _color = widget.isSelected ? cPrimary : cOnPrimary.withOpacity(0.7);
-      _textColor = widget.isSelected ? cOnPrimary : cOnSecondary;
-      _gradient = widget.isSelected
-          ? const LinearGradient(
-              colors: [
-                cPrimary,
-                cAccentPrimary,
-              ],
-            )
-          : null;
-    });
-    // }
+    setState(
+      () {
+        _color = widget.isSelected ? cPrimary : cOnPrimary.withOpacity(0.7);
+        _textColor = widget.isSelected ? cOnPrimary : cOnSecondary;
+        _gradient = widget.isSelected
+            ? const LinearGradient(
+                colors: [
+                  cPrimary,
+                  cAccentPrimary,
+                ],
+              )
+            : null;
+      },
+    );
   }
 
   @override

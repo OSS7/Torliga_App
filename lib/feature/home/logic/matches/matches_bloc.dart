@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:torliga/feature/home/data/models/competition_model.dart';
-import 'package:torliga/feature/home/data/models/competition_with_matches_model.dart';
+import '../../data/models/competition_model.dart';
 
 import '../../../../core/di/dependency_injection.dart';
 import '../../data/repos/matches_repo.dart';
@@ -16,8 +15,9 @@ class MatchesBloc extends Bloc<MatchesEvent, MatchesState> {
   List<CompetitionModel>? get competitions => _competitions;
   MatchesBloc() : super(MatchesInitial()) {
     on<GetMatchesEvent>((event, emit) async {
+      final _matchesRepo = MatchesRepository();
       emit(MatchesLoading());
-      final result = await MatchesRepository().getMatches(event.matchesDate);
+      final result = await _matchesRepo.getMatches(event.matchesDate);
       result.when(
         success: (competitions) {
           _competitions = competitions;

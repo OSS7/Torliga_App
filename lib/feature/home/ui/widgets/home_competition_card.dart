@@ -25,6 +25,7 @@ class _HomeCompetitionCardState extends State<HomeCompetitionCard> {
 
   @override
   Widget build(BuildContext context) {
+    /// competition card design
     return Container(
       margin: EdgeInsets.symmetric(vertical: AppPadding.small),
       decoration: BoxDecoration(
@@ -40,12 +41,13 @@ class _HomeCompetitionCardState extends State<HomeCompetitionCard> {
               });
             },
             child: HomeCompetitionTopBar(
-                competitionImage: widget.competition?.logo,
-                competitionName: widget.competition?.name,
-                isExpanded: isExpanded),
-          ).redacted(
-            context: context,
-            redact: widget.isLoading,
+              competitionImage: widget.competition?.logo,
+              competitionName: widget.competition?.name,
+              isExpanded: isExpanded,
+              isLoading: widget.isLoading,
+            ),
+
+            /// shimmer effect for card
           ),
           if (isExpanded)
             ListView.builder(
@@ -54,9 +56,11 @@ class _HomeCompetitionCardState extends State<HomeCompetitionCard> {
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
                 final _match = widget.competition?.matches?[index];
-                return HomeMatchItem(match: _match).redacted(
-                  context: context,
-                  redact: widget.isLoading,
+                return HomeMatchItem(
+                  match: _match,
+                  isLoading: widget.isLoading,
+
+                  /// shimmer effect for matches items
                 );
               },
             ),

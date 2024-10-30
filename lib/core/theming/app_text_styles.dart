@@ -21,7 +21,7 @@ class AppTextStyles {
       {double fontSize = 12, Color? color, TextDecoration? textDecoration}) {
     return TextStyle(
       fontSize: fontSize.sp,
-      fontWeight: FontWeight.w700,
+      fontWeight: FontWeight.bold,
       color: color ?? cOnSecondary,
       decoration: textDecoration,
     );
