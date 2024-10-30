@@ -43,8 +43,8 @@ lib/
 
 5. generate the necessary auto-generated files;
     ```bash
-flutter run build_runner build --delete-conflicting-outputs
-```
+    flutter run build_runner build --delete-conflicting-outputs
+    ```
 
 6. Run the application:
     ```bash
