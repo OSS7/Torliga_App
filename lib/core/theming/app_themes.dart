@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'colors.dart';
 
 class AppThemes {
-  static String? fontFamily = GoogleFonts.interTight().fontFamily;
+  static String? fontFamily = GoogleFonts.chakraPetch().fontFamily;
   static ThemeData theme() => ThemeData(
         scaffoldBackgroundColor: cSecondary,
         secondaryHeaderColor: Color(0xff43484C),

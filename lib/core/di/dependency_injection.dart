@@ -1,10 +1,9 @@
 import 'package:get_it/get_it.dart';
+import 'package:torliga/feature/home/logic/matches/matches_bloc.dart';
 
 final getIt = GetIt.instance;
 
-Future<void> setupGetIt() async {
+Future setupGetIt() async{
   // matches
-  // league
-
-  // getIt.registerLazySingleton<Class>(() => Class());
+  getIt.registerLazySingleton<MatchesBloc>(() => MatchesBloc());
 }

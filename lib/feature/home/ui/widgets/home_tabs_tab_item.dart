@@ -6,14 +6,16 @@ import '../../../../core/theming/colors.dart';
 
 class HomeTabsTabItem extends StatefulWidget {
   final bool isSelected;
-  final String text;
+  final String title;
+  final String endpoint;
   final VoidCallback onTap;
 
   const HomeTabsTabItem({
     super.key,
     required this.isSelected,
-    required this.text,
+    required this.title,
     required this.onTap,
+    required this.endpoint,
   });
 
   @override
@@ -21,17 +23,9 @@ class HomeTabsTabItem extends StatefulWidget {
 }
 
 class _HomeTabsTabItemState extends State<HomeTabsTabItem> {
-  late Color _color;
-  late Color _textColor;
+  late Color _color = cOnPrimary.withOpacity(0.7);
+  late Color _textColor = cOnSecondary;
   Gradient? _gradient;
-
-  @override
-  void initState() {
-    super.initState();
-    _color = cOnPrimary.withOpacity(0.7);
-    _textColor = cOnSecondary;
-    _gradient = null;
-  }
 
   @override
   void didUpdateWidget(covariant HomeTabsTabItem oldWidget) {
@@ -73,7 +67,7 @@ class _HomeTabsTabItemState extends State<HomeTabsTabItem> {
             gradient: _gradient,
           ),
           child: Text(
-            widget.text,
+            widget.title,
             textAlign: TextAlign.center,
             style: AppTextStyles.bold(
               fontSize: 12,

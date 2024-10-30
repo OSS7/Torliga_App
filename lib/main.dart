@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'core/di/dependency_injection.dart';
 import 'core/theming/app_themes.dart';
-import 'feature/games/ui/home_view.dart';
+import 'feature/home/ui/home_view.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupGetIt();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -19,7 +22,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: AppThemes.theme(),
         debugShowCheckedModeBanner: false,
-        home: const HomeView(),
+        home: HomeView(),
       ),
     );
   }

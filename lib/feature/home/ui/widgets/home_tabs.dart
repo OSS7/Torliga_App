@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:torliga/feature/games/ui/widgets/home_tabs_tab_item.dart';
 
 import '../../../../core/theming/app_paddings.dart';
+import '../../logic/matches/matches_bloc.dart';
+import 'home_tabs_tab_item.dart';
 
 class HomeTabs extends StatefulWidget {
   const HomeTabs({super.key});
@@ -12,7 +13,7 @@ class HomeTabs extends StatefulWidget {
 
 class _HomeTabsState extends State<HomeTabs> {
   int selectedIndex = 0;
-  List<String> tabs = const ['Today', 'Upcoming', 'Past'];
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -23,11 +24,29 @@ class _HomeTabsState extends State<HomeTabs> {
             setState(() {
               selectedIndex = index;
             });
+            matchesBloc
+                .add(GetMatchesEvent(tabs[index]['endpoint'].toString()));
           },
           isSelected: (selectedIndex == index),
-          text: tabs[index],
+          title: tabs[index]['title'].toString(),
+          endpoint: tabs[index]['endpoint'].toString(),
         ),
       ),
     );
   }
 }
+
+List<Map<String, String>> tabs = [
+  {
+    'endpoint': 'todayMatches',
+    'title': 'Today',
+  },
+  {
+    'endpoint': 'tomorrowMatches',
+    'title': 'Upcoming',
+  },
+  {
+    'endpoint': 'yesterdayMatches',
+    'title': 'Past',
+  },
+];
