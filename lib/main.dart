@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'core/theming/app_themes.dart';
+import 'feature/games/ui/home_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,21 +13,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      home: MyHomePage(),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: AppThemes.theme(),
+        debugShowCheckedModeBanner: false,
+        home: const HomeView(),
+      ),
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
   }
 }
