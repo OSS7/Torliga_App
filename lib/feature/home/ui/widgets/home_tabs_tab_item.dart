@@ -22,30 +22,9 @@ class HomeTabsTabItem extends StatefulWidget {
 
 class _HomeTabsTabItemState extends State<HomeTabsTabItem> {
   /// animation properties
-  late Color _color = cOnPrimary.withOpacity(0.7);
-  late Color _textColor = cOnSecondary;
+  late Color _color;
+  late Color _textColor;
   Gradient? _gradient;
-
-  @override
-  void didUpdateWidget(covariant HomeTabsTabItem oldWidget) {
-    super.didUpdateWidget(oldWidget);
-
-    /// change back and fore color smoothly with animation when tab changes
-    setState(
-      () {
-        _color = widget.isSelected ? cPrimary : cOnPrimary.withOpacity(0.7);
-        _textColor = widget.isSelected ? cOnPrimary : cOnSecondary;
-        _gradient = widget.isSelected
-            ? const LinearGradient(
-                colors: [
-                  cPrimary,
-                  cAccentPrimary,
-                ],
-              )
-            : null;
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,5 +55,36 @@ class _HomeTabsTabItemState extends State<HomeTabsTabItem> {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    /// initialize selected item
+    _changeSelectedItem();
+  }
+
+  @override
+  void didUpdateWidget(covariant HomeTabsTabItem oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    /// change back and fore color smoothly with animation when tab changes
+    setState(() {
+      _changeSelectedItem();
+    });
+  }
+
+  _changeSelectedItem() {
+    _color = widget.isSelected ? cPrimary : cOnPrimary.withOpacity(0.7);
+    _textColor = widget.isSelected ? cOnPrimary : cOnSecondary;
+    _gradient = widget.isSelected
+        ? const LinearGradient(
+            colors: [
+              cPrimary,
+              cAccentPrimary,
+            ],
+          )
+        : null;
   }
 }
