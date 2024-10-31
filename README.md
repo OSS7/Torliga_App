@@ -2,6 +2,10 @@
 
 **Torliga App** is a Flutter application that displays live sports matches, including teams, scores, and match details, with real-time updates. The app is built using BLoC for state management, follows a clean architecture.
 
+## Download the Demo APK
+[Download the APK](https://drive.google.com/file/d/1_Ec9OpqllxwcqwnQGT-bPgpkfoFSJwGR/view?usp=drive_link)
+
+
 ## Project Structure
 ```bash
 lib/
