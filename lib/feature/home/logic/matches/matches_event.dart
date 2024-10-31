@@ -8,3 +8,5 @@ class GetMatchesEvent extends MatchesEvent {
   final String matchesDate;
   GetMatchesEvent(this.matchesDate);
 }
+
+class UpdateMatchesEvent extends MatchesEvent {}

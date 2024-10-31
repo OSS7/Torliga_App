@@ -8,6 +8,7 @@ import 'feature/home/ui/home_view.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupGetIt();
+  await ScreenUtil.ensureScreenSize();
   runApp(const MyApp());
 }
 

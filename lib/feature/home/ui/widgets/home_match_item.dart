@@ -15,13 +15,14 @@ class HomeMatchItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final homeTeamName = match?.homeTeam?.name ?? 'N/A';
     final awayTeamName = match?.awayTeam?.name ?? 'N/A';
-    final homeTeamShirt = match?.homeTeam?.shirt ?? '';
-    final awayTeamShirt = match?.awayTeam?.shirt ?? '';
+    final homeTeamShirt = match?.homeTeam?.shirt ??
+        'https://img.thesports.com/football/team/3e724dc0e6fffd01a630b65af348fab6.png';
+    final awayTeamShirt = match?.awayTeam?.shirt ??
+        'https://img.thesports.com/football/team/3e724dc0e6fffd01a630b65af348fab6.png';
     final homeTeamGoal = match?.homeTeam?.score?[0] ?? 0;
     final awayTeamGoal = match?.homeTeam?.score?[0] ?? 0;
     final matchStarted = match?.kickOff ?? 0;
-    return Container(
-      height: 0.08.sh,
+    return Padding(
       padding: const EdgeInsets.all(10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -31,9 +32,15 @@ class HomeMatchItem extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(
-                  homeTeamName,
-                  style: AppTextStyles.bold(),
+                SizedBox(
+                  width: 0.22.sw,
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      homeTeamName,
+                      style: AppTextStyles.bold(),
+                    ),
+                  ),
                 ),
                 const HorizontalSpacer(2),
                 Image.network(
@@ -50,7 +57,7 @@ class HomeMatchItem extends StatelessWidget {
 
           /// if match is not started yet, show match time, if started, show scores
           Text(
-            matchStarted == 1
+            matchStarted != 0
                 ? '$homeTeamGoal - $awayTeamGoal'
                 : match?.matchTime ?? 'N/A',
             style: AppTextStyles.bold(),
@@ -71,9 +78,13 @@ class HomeMatchItem extends StatelessWidget {
                   height: 0.04.sh,
                 ),
                 const HorizontalSpacer(2),
-                Text(
-                  awayTeamName,
-                  style: AppTextStyles.bold(),
+                SizedBox(
+                  width: 0.22.sw,
+                  child: Text(
+                    awayTeamName,
+                    style: AppTextStyles.bold(),
+                    textAlign: TextAlign.left,
+                  ),
                 ),
               ],
             ),

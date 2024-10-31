@@ -12,8 +12,7 @@ class HomeTabs extends StatefulWidget {
 }
 
 class _HomeTabsState extends State<HomeTabs> {
-  int selectedIndex = 0;
-
+  int? selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Row(
